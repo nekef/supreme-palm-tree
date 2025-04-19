@@ -61,7 +61,11 @@ stop_process() {
     kill -s SIGTERM "$pid"
     echo "Sent SIGTERM to process $process_identifier (PID: $pid)"
   else
-      echo "Error: Process $process_identifier (PID: $pid) not running or not found"
+    if [[ "$process_identifier" =~ ^[0-9]+$ ]]; then
+      echo "Error: Process with PID '$pid' is not running or does not exist."
+    else
+      echo "Error: Process '$process_identifier' (PID: $pid) is not running or does not exist."
+    fi
   fi
 
 }
@@ -95,7 +99,11 @@ kill_process() {
       kill -s SIGKILL "$pid"
       echo "Sent SIGKILL to process $process_identifier (PID: $pid)"
   else
-      echo "Error: Process $process_identifier (PID: $pid) not running or not found"
+    if [[ "$process_identifier" =~ ^[0-9]+$ ]]; then
+      echo "Error: Process with PID '$pid' is not running or does not exist."
+    else
+      echo "Error: Process '$process_identifier' (PID: $pid) is not running or does not exist."
+    fi
   fi
 }
 
@@ -128,7 +136,11 @@ terminate_process() {
         kill -s SIGINT "$pid"
         echo "Sent SIGINT to process $process_identifier (PID: $pid)"
   else
-        echo "Error: Process $process_identifier (PID: $pid) not running or not found"
+    if [[ "$process_identifier" =~ ^[0-9]+$ ]]; then
+      echo "Error: Process with PID '$pid' is not running or does not exist."
+    else
+      echo "Error: Process '$process_identifier' (PID: $pid) is not running or does not exist."
+    fi
   fi
 }
 
