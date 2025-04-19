@@ -1,6 +1,4 @@
-import time
-
-
-for i in range(10):
+# Print "Hello, World!" 10 times efficiently.
+# Demonstrates a simple loop for repeated output.
+for _ in range(10):
     print("hello world")
-    time.sleep(1)
