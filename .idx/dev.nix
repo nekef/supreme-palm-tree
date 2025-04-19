@@ -11,7 +11,7 @@
     pkgs.python311Packages.pip
     # pkgs.nodejs_20
     pkgs.nodejs_20
-    pkgs.jdk17
+    pkgs.jdk17 
   ];
 
   # Sets environment variables in the workspace
