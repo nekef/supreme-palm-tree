@@ -144,27 +144,47 @@ terminate_process() {
   fi
 }
 
-# Main script logic
-case "$1" in
-  start)
-    start_process "$2" "$3"
-    ;;
-  list)
-    list_processes
-    ;;
-  stop)
-    stop_process "$2"
-    ;;
-  kill)
-    kill_process "$2"
-    ;;
-  terminate)
-    terminate_process "$2"
-    ;;
-  *)
-    echo "Usage: $0 {start <command> <process_name> | list | stop <process_name_or_pid> | kill <process_name_or_pid> | terminate <process_name_or_pid>}"
-    exit 1
-    ;;
-esac
+# Interactive menu
+while true; do
+  echo ""
+  echo "Process Manager Menu:"
+  echo "1. Start a process"
+  echo "2. List processes"
+  echo "3. Stop a process"
+  echo "4. Kill a process"
+  echo "5. Terminate a process"
+  echo "6. Exit"
+  read -p "Select an option (1-6): " choice
+
+  case "$choice" in
+    1)
+      read -p "Enter command to run: " command
+      read -p "Enter process name: " process_name
+      start_process "$command" "$process_name"
+      ;;
+    2)
+      list_processes
+      ;;
+    3)
+      read -p "Enter process name or PID to stop: " process_identifier
+      stop_process "$process_identifier"
+      ;;
+    4)
+      read -p "Enter process name or PID to kill: " process_identifier
+      kill_process "$process_identifier"
+      ;;
+    5)
+      read -p "Enter process name or PID to terminate: " process_identifier
+      terminate_process "$process_identifier"
+      ;;
+    6)
+      echo "Exiting..."
+      exit 0
+      ;;
+    *)
+      echo "Invalid option. Please select a number between 1 and 6."
+      ;;
+  esac
+done
 
 exit 0
