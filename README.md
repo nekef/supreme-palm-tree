@@ -18,5 +18,5 @@ Please note that this is a public collaborative repository. Direct contributions
 
 For any inquiries or further information, you can reach out to:
 
--   Hotroos
--   Nekef
+-   Hotroos - hotroos@duck.com
+-   Nekef - nekef@duck.com
